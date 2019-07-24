@@ -29,6 +29,8 @@ private void startPlay() {
 		Log.e(LOG_TAG, "mNexPlayer open failed");
 	}
 }
+
+...
 ```
 
 Hardware Widevine configuration should be done before _open_ method of NexPlayer object is called.
