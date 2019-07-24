@@ -13,22 +13,22 @@ Using Hardware Widevine with NexPlayer means using MediaDrm. MediaDrm supports b
 ...
 
 private void startPlay() {
-			 String contentUrl = "https://storage.googleapis.com/wvmedia/cenc/h264/tears/tears.mpd";
-			 String keyServerUrl = "https://proxy.uat.widevine.com/proxy?provider=widevine_test";
+	String contentUrl = "https://storage.googleapis.com/wvmedia/cenc/h264/tears/tears.mpd";
+	String keyServerUrl = "https://proxy.uat.widevine.com/proxy?provider=widevine_test";
 
-			 int drmType = 0;
+	int drmType = 0;
 
-			 // HARDWARE WIDEVINE CONFIGURATION
-			 mNexPlayer.setNexMediaDrmKeyServerUri(keyServerUrl);
-			 drmType |= 1;
+	// HARDWARE WIDEVINE CONFIGURATION
+	mNexPlayer.setNexMediaDrmKeyServerUri(keyServerUrl);
+	drmType |= 1;
 
-			 mNexPlayer.setProperties(NEXPLAYER_PROPERTY_ENABLE_MEDIA_DRM, drmType);
+	mNexPlayer.setProperties(NEXPLAYER_PROPERTY_ENABLE_MEDIA_DRM, drmType);
 
-			 int result = mNexPlayer.open(contentUrl, null, null, NexPlayer.NEXPLAYER_SOURCE_TYPE_STREAMING, NexPlayer.NEXPLAYER_TRANSPORT_TYPE_TCP);
-			 if( result != 0 ) {
-					 Log.e(LOG_TAG, "mNexPlayer open failed");
-			 }
-	 }
+	int result = mNexPlayer.open(contentUrl, null, null, NexPlayer.NEXPLAYER_SOURCE_TYPE_STREAMING, NexPlayer.NEXPLAYER_TRANSPORT_TYPE_TCP);
+	if( result != 0 ) {
+	Log.e(LOG_TAG, "mNexPlayer open failed");
+	}
+}
 ```
 
 Hardware Widevine configuration should be done before _open_ method of NexPlayer object is called.
@@ -48,12 +48,12 @@ In YourAndroidProject, _libnexwvdrm.so_ should exist in _~/YourAndroidProject/ap
 ...
 
 private void startPlay() {
-			 String contentUrl = "https://storage.googleapis.com/wvmedia/cenc/h264/tears/tears.mpd";
-			 String keyServerUrl = "https://proxy.uat.widevine.com/proxy?provider=widevine_test";
+	String contentUrl = "https://storage.googleapis.com/wvmedia/cenc/h264/tears/tears.mpd";
+	String keyServerUrl = "https://proxy.uat.widevine.com/proxy?provider=widevine_test";
 
-			 int drmType = 0;
+	int drmType = 0;
 
-			 // SOFTWARE WIDEVINE CONFIGURATION
+	// SOFTWARE WIDEVINE CONFIGURATION
         mNexWVDRM = new NexWVDRM();
         File fileDir = this.getFilesDir();
         String strCertPath = fileDir.getAbsolutePath() + "/wvcert";
@@ -63,12 +63,12 @@ private void startPlay() {
             drmType |= 2;
         }
 
-			 mNexPlayer.setProperties(NEXPLAYER_PROPERTY_ENABLE_MEDIA_DRM, drmType);
+	mNexPlayer.setProperties(NEXPLAYER_PROPERTY_ENABLE_MEDIA_DRM, drmType);
 
-			 int result = mNexPlayer.open(contentUrl, null, null, NexPlayer.NEXPLAYER_SOURCE_TYPE_STREAMING, NexPlayer.NEXPLAYER_TRANSPORT_TYPE_TCP);
-			 if( result != 0 ) {
-					 Log.e(LOG_TAG, "mNexPlayer open failed");
-			 }
+	int result = mNexPlayer.open(contentUrl, null, null, NexPlayer.NEXPLAYER_SOURCE_TYPE_STREAMING, NexPlayer.NEXPLAYER_TRANSPORT_TYPE_TCP);
+	if( result != 0 ) {
+		Log.e(LOG_TAG, "mNexPlayer open failed");
+	}
 }
 
 ...
