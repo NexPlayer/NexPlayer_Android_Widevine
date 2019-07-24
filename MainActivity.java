@@ -84,15 +84,15 @@ public class MainActivity extends AppCompatActivity {
 //        drmType |= 1;
 
 
-        // SOFTWARE WIDEVINE
-        mNexWVDRM = new NexWVDRM();
-        File fileDir = this.getFilesDir();
-        String strCertPath = fileDir.getAbsolutePath() + "/wvcert";
+//         // SOFTWARE WIDEVINE
+//         mNexWVDRM = new NexWVDRM();
+//         File fileDir = this.getFilesDir();
+//         String strCertPath = fileDir.getAbsolutePath() + "/wvcert";
 
-        int offlineMode = 0;
-        if(mNexWVDRM.initDRMManager(getEnginePath(this), strCertPath, keyServerUrl, offlineMode) == 0) {
-            drmType |= 2;
-        }
+//         int offlineMode = 0;
+//         if(mNexWVDRM.initDRMManager(getEnginePath(this), strCertPath, keyServerUrl, offlineMode) == 0) {
+//             drmType |= 2;
+//         }
 
 
         mNexPlayer.setProperties(NEXPLAYER_PROPERTY_ENABLE_MEDIA_DRM, drmType);
@@ -205,6 +205,7 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             });
                         }
+                        break;
                 }
             }
 
