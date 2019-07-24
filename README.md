@@ -26,7 +26,7 @@ private void startPlay() {
 
 	int result = mNexPlayer.open(contentUrl, null, null, NexPlayer.NEXPLAYER_SOURCE_TYPE_STREAMING, NexPlayer.NEXPLAYER_TRANSPORT_TYPE_TCP);
 	if( result != 0 ) {
-	Log.e(LOG_TAG, "mNexPlayer open failed");
+		Log.e(LOG_TAG, "mNexPlayer open failed");
 	}
 }
 ```
