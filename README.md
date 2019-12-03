@@ -25,8 +25,6 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2 && MediaDrm.isCr
 	mNexWVDRM = new NexWVDRM();
 	mNexWVDRM.initDRMManager(strEnginePath, strFilePath, strKeyServerURL, offlineMode);
 	drmType = 2;
-}else{
-	drmType = 0;
 }
 mNexPlayer.setProperties(NEXPLAYER_PROPERTY_ENABLE_MEDIA_DRM, drmType);
 
@@ -41,10 +39,19 @@ For advance usage check the Widevine documentation provided with the SDK.
 ***
 ### 2. Solving compatibility problems
 
-In order to use SW Widevine in an aparently MediaDRM compatible device it is necessary to create a blacklist, a simple approach could be like this:
+In order to use SW Widevine in an apparently MediaDRM compatible device it is necessary to create a blacklist, a simple approach could be like this:
 
 ```java
-if (Build.MODEL !=  "Your problematic device" && Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2 && MediaDrm.isCryptoSchemeSupported(WIDEVINE_UUID)) {
+if (<Your problematic device is in the blacklist>)
+{
+	if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2 && MediaDrm.isCryptoSchemeSupported(WIDEVINE_UUID)) {
+		//Use MediaDRM
+	} else {
+		//Use SW Widevine DRM
+	}
+} else {
+	//Use SW Widevine DRM
+}
 ```
 
 
