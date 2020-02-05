@@ -7,7 +7,7 @@ By default, NexPlayer will use MediaDRM. If it is not available, NexPlayer will 
 Please refer to the [NexPlayer for Android](https://github.com/NexPlayer/NexPlayer_Android) documentation if you need assistance integrating NexPlayer on Android.
 
 ***
-## 1. Widevine Integration Sample Code
+## Widevine Integration Sample Code
 
 
 ### _NexplayerSample.java_
@@ -37,7 +37,7 @@ The Widevine configuration should be executed before the _open_ method of the Ne
 For advanced usage, please check the Widevine documentation provided with the SDK.
 
 ***
-## 2. Solving compatibility problems
+## Solving compatibility problems
 
 In order to use software Widevine in MediaDRM compatible devices, you must create a blacklist. 
 
