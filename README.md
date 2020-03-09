@@ -1,5 +1,9 @@
 # How to use Widevine DRM on Android
 
+Widevine allows to licentiate, distribute and protect both content and its playback. WV uses MediaDRM, which is a module provided by google, and used for obtaining keys to decrypt content.
+
+There are two types of Widevine: <strong>MediaDRM</strong> (From Android 4.0.3) and <strong>Software Widevine</strong>
+
 This is a simple guide to teach you how to integrate Widevine DRM into NexPlayer's Android SDK.
 
 By default, NexPlayer will use MediaDRM. If it is not available, NexPlayer will utilize software Widevine.
@@ -23,9 +27,16 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2 && MediaDrm.isCr
 } else {
 	//Instantiate and configure NexWVDRM
 	mNexWVDRM = new NexWVDRM();
+	
+	//This method initializes the minimum necessary information for playing Widevine DRM contents and registers it in Widevine DRM module.
 	mNexWVDRM.initDRMManager(strEnginePath, strFilePath, strKeyServerURL, offlineMode);
 	drmType = 2;
 }
+
+//  Specifies the decryption module to use:
+//          -1: HW decryption module.
+//          -2: SW decryption module.
+
 mNexPlayer.setProperties(NEXPLAYER_PROPERTY_ENABLE_MEDIA_DRM, drmType);
 
 mNexPlayer.open(path, smiPath, externalPDPath, sourceType, transportType);
