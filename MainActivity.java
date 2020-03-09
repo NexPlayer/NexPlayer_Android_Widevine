@@ -74,29 +74,44 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startPlay() {
+        //Content's URL
         String contentUrl = "https://storage.googleapis.com/wvmedia/cenc/h264/tears/tears.mpd";
+
+        //Server access key
         String keyServerUrl = "https://proxy.uat.widevine.com/proxy?provider=widevine_test";
 
         int drmType = 0;
 
 //        // HARDWARE WIDEVINE
+
+          // Enter the DRM key server URL to play content using the HW decryption module.
 //        mNexPlayer.setNexMediaDrmKeyServerUri(keyServerUrl);
+
+          //MediaDRM---> drmType = 1
 //        drmType |= 1;
 
 
 //         // SOFTWARE WIDEVINE
 //         mNexWVDRM = new NexWVDRM();
+
+           // path to store the key and authentication information received from the License server when Store / Retrieve play is performed
 //         File fileDir = this.getFilesDir();
 //         String strCertPath = fileDir.getAbsolutePath() + "/wvcert";
 
 //         int offlineMode = 0;
+
+           //This method initializes the minimum necessary information for playing Widevine DRM contents and registers it in Widevine DRM module. 
 //         if(mNexWVDRM.initDRMManager(getEnginePath(this), strCertPath, keyServerUrl, offlineMode) == 0) {
 //             drmType |= 2;
 //         }
-
-
+        
+        /*Specifies the decryption module to use:
+            -1: HW decryption module.
+            -2: SW decryption module.
+        */
         mNexPlayer.setProperties(NEXPLAYER_PROPERTY_ENABLE_MEDIA_DRM, drmType);
 
+        //Open content
         int result = mNexPlayer.open(contentUrl, null, null, NexPlayer.NEXPLAYER_SOURCE_TYPE_STREAMING, NexPlayer.NEXPLAYER_TRANSPORT_TYPE_TCP);
         if( result != 0 ) {
             Log.e(LOG_TAG, "mNexPlayer open failed");
