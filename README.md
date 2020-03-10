@@ -1,6 +1,6 @@
 # How to use Widevine DRM on Android
 
-Widevine allows to licentiate, distribute and protect both content and its playback. WV uses MediaDRM, which is a module provided by google, and used for obtaining keys to decrypt content.
+Widevine allows to distribute and protect both content and its playback. WV uses MediaDRM, which is a module provided by google, and used for obtaining keys to decrypt content.
 
 There are two types of Widevine: <strong>MediaDRM</strong> (From Android 4.0.3) and <strong>Software Widevine</strong>
 
