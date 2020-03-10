@@ -105,10 +105,11 @@ public class MainActivity extends AppCompatActivity {
 //             drmType |= 2;
 //         }
         
-        /*Specifies the decryption module to use:
-            -1: HW decryption module.
-            -2: SW decryption module.
-        */
+//          Specifies the decryption module to use. Sets a value for NEXPLAYER_PROPERTY_ENABLE_MEDIA_DRM:
+//                  -drmType = 1: Using HW decryption module.
+//                  -drmType = 2: Using SW decryption module.
+//                  -drmType = 3: Using SW and HW decryption modules.
+//          Despite of this, this is only a setter of the property and appropriate type of Widevine must be initialized. 
         mNexPlayer.setProperties(NEXPLAYER_PROPERTY_ENABLE_MEDIA_DRM, drmType);
 
         //Open content
