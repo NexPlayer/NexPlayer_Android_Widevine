@@ -23,19 +23,20 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2 && MediaDrm.isCr
 {
 	//Configure Media DRM
 	mNexPlayer.setNexMediaDrmKeyServerUri(strKeyServerURL);
-	drmType = 1;
+	drmType |= 1;
 } else {
 	//Instantiate and configure NexWVDRM
 	mNexWVDRM = new NexWVDRM();
 	
 	//This method initializes the minimum necessary information for playing Widevine DRM contents and registers it in Widevine DRM module.
 	mNexWVDRM.initDRMManager(strEnginePath, strFilePath, strKeyServerURL, offlineMode);
-	drmType = 2;
+	drmType |= 2;
 }
 
 //  Specifies the decryption module to use. Sets a value for NEXPLAYER_PROPERTY_ENABLE_MEDIA_DRM:
 //          -drmType = 1: Using HW decryption module.
 //          -drmType = 2: Using SW decryption module.
+//          -drmType = 3: Using SW and HW decryption modules.
 //  Despite of this, this is only a setter of the property and appropriate type of Widevine must be initialized. 
 
 mNexPlayer.setProperties(NEXPLAYER_PROPERTY_ENABLE_MEDIA_DRM, drmType);
