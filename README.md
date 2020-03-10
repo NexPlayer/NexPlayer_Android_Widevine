@@ -33,9 +33,10 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2 && MediaDrm.isCr
 	drmType = 2;
 }
 
-//  Specifies the decryption module to use:
-//          -1: HW decryption module.
-//          -2: SW decryption module.
+//  Specifies the decryption module to use. Sets a value for NEXPLAYER_PROPERTY_ENABLE_MEDIA_DRM:
+//          -drmType = 1: Using HW decryption module.
+//          -drmType = 2: Using SW decryption module.
+//  Despite of this, this is only a setter of the property and appropriate type of Widevine must be initialized. 
 
 mNexPlayer.setProperties(NEXPLAYER_PROPERTY_ENABLE_MEDIA_DRM, drmType);
 
